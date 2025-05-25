@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Baking Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-image: url('https://static.vecteezy.com/system/resources/previews/027/377/332/original/seamless-background-with-pink-lattice-pattern-and-wavy-lines-elements-vector.jpg');
+      background-repeat: repeat;
+      background-size: 1000px;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-y: auto;
+      overflow-x: visible;
+    }
+
+    .container {
+  position: relative;
+  width: 90vw;
+  max-width: 400px;
+  height: auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 0 15px #ff99bb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5rem;
+      color: #ff6699;
+      text-align: center;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .nav-btn {
+      position: absolute;
+      background-color: transparent;
+      border: none !important;
+      color: #731e33;
+      padding: 40px 28px;
+      border-radius: 45px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+      z-index: 3;
+      min-width: 130px;
+      pointer-events: auto;
+    }
+
+    .nav-btn:hover {
+      background-color: transparent;
+      transform: scale(1.1); background-color: transparent;
+      box-shadow: none;
+    }
+
+    #btnTop { top: -120px; left: 50%; transform: translateX(-50%); }
+    #btnBottom { bottom: -127px; left: 50%; transform: translateX(-50%); }
+    #btnLeft { left: -165px; top: 60%; transform: translateY(-50%); }
+    #btnRight { right: -145px; top: 60%; transform: translateY(-50%); }
+
+    .splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('/mnt/data/36894b61-3479-4996-9bc3-c72a7d7782ff.png') center/contain no-repeat;
+      background-color: rgba(255, 235, 245, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: scale(0.3);
+      transition: transform 0.6s ease, opacity 0.6s ease;
+      z-index: 999;
+    }
+
+    .splash-screen.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .splash-text {
+  position: absolute;
+  font-size: 1.6rem;
+  color: #b3005f;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 20px;
+  max-width: 80%;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: center;
+  box-shadow: 0 0 10px #ffb6c1;
+  z-index: 1000;
+  cursor: pointer;
+}
+  
+    
+  @media (max-width: 600px) {
+  #btnTop, #btnBottom, #btnLeft, #btnRight {
+    position: static;
+    transform: none;
+    display: block;
+    margin: 10px auto;
+  }
+
+  .nav-btn {
+    width: 80%;
+    font-size: 1rem;
+    padding: 12px 16px;
+  }
+
+  .container {
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .container h1 {
+    margin-bottom: 20px;
+  }
+}
+
+  @media (max-width: 600px) {
+    .container {
+      width: 90vw;
+      height: auto;
+      padding: 20px;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .nav-btn {
+      font-size: 0.9rem;
+      min-width: 100px;
+      padding: 10px 15px;
+      position: static !important;
+      transform: none !important;
+      margin: 10px auto;
+      display: block;
+    }
+
+    #btnTop, #btnBottom, #btnLeft, #btnRight {
+      position: static;
+      transform: none;
+      display: block;
+      margin: 10px auto;
+    }
+
+    img[alt="icon"] {
+      display: none;
+    }
+  }
+</style>
+</head>
+  <body>
+      <div class="container" id="mainContent">
+    <img src="https://static.vecteezy.com/system/resources/previews/046/013/418/non_2x/watercolor-strawberry-cheesecake-png.png" width="160" style="position:absolute; top:-155px; left:50%; transform:translateX(-50%); z-index:2;" alt="icon" />
+<button class="nav-btn" id="btnTop" onclick="showSplash('Welcome to the Baking Club — where flour flies, ovens glow, and sweet creativity rises! \n\nFounded on a shared love for all things baked, our club brings together aspiring bakers, seasoned pros, and everyone in between. Whether you’re perfecting your sourdough starter, piping cupcakes with precision, or just learning how to crack an egg without making a mess, there’s a place for you here.\n\nAt the heart of our club is community. We believe baking is more than just mixing ingredients — it’s about sharing stories, traditions, laughter, and the joy that comes with creating something from scratch. Through weekly bakes, recipe swaps, workshops, and bake-offs, we explore techniques from around the world and celebrate the art and science of baking. So grab your apron, preheat your oven, and join us as we whisk, knead, and bake our way to delicious discoveries and lasting friendships. \n\nLet’s bake the world a better place — one treat at a time. \n\nFollow us on Instagram: <a href=&quot;https://www.instagram.com/ckm_baking?igsh=MTZ3YWR1ODVybXFwcQ%3D%3D&amp;utm_source=qr&quot; target=&quot;_blank&quot; style=&quot;color:#d60066;text-decoration:underline;&quot;>@ckm_baking</a>')">About Us</button>
+    <img src="https://static.vecteezy.com/system/resources/previews/010/290/176/non_2x/dessert-watercolor-cartoon-cute-free-png.png" width="140" style="position:absolute; bottom:-160px; left:49%; transform:translateX(-50%); z-index:2;" alt="icon" />
+<button class="nav-btn" id="btnBottom" onclick="showSplash('Join us in Room 9A. Every Tuesday after school. \n\nQuestions? Contact our president: shortdadi07@gmail.com \nSign up here: <a href=&quot;https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fforms.gle%2FR1hp2hSyAqf2kPPM9&amp;data=05%7C02%7Cbritnyj%40vt.edu%7Cd6e36d8c264a4fbd326408dd9b17f863%7C6095688410ad40fa863d4f32c1e3a37a%7C0%7C0%7C638837249434968670%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=MmSJLmShM94PXv3YFv1Uemn6TES8E%2BrhnH%2FXIn9EaGg%3D&amp;reserved=0&quot; target=&quot;_blank&quot; style=&quot;color:#d60066;text-decoration:underline;&quot;>Join Form</a>')">Join</button>
+    <img src="https://static.vecteezy.com/system/resources/previews/010/292/156/non_2x/dessert-watercolor-cartoon-cute-free-png.png" width="140" style="position:absolute; left:-165px; top:10%; z-index:2;" alt="icon" />
+<button class="nav-btn" id="btnLeft" onclick="showSplash('Try out our cupcake, dumpling, and pasta recipes! Perfect for beginners and pros.')">Recipes</button>
+    <img src="https://static.vecteezy.com/system/resources/previews/032/499/267/non_2x/donut-dessert-watercolor-png.png" width="140" style="position:absolute; right:-155px; top:15%; z-index:2;" alt="icon" />
+<button class="nav-btn" id="btnRight" onclick="showSplash('COMING UP EVENTS \n\n🍪 \n1. Mystery Ingredient Bake-Off\nJune 3, 2025 | 4:00–6:00 PM\nTurn secret ingredients into surprise masterpieces!\n\n🧁\n2. Cupcake Wars\nJune 10, 2025 | 3:40–5:30 PM\nTeam up and decorate to win sweet glory!')">Events</button>
+<div style="position: fixed; top: 20px; right: 20px; width: 140px; height: 160px; background: url('https://pnghq.com/wp-content/uploads/pink-sticky-notes-png-transparent-image-download-51010.png') no-repeat center/contain; z-index: 50; display: flex; align-items: center; justify-content: center; text-align: center; font-family: 'Quicksand', sans-serif; font-size: 0.9rem; color: #731e33; padding: 20px;">
+  Emily Liu<br>Cindy Jiang<br>Annabelle Yee
+</div>
+    
+<h1>Baking Club</h1>
+  </div>
+
+  <div class="splash-screen" id="splash" onclick="hideSplash()">
+    <div class="splash-text" id="splashText">Click anywhere to return</div>
+  </div>
+
+  <script>
+    function showSplash(text) {
+      document.getElementById('mainContent').style.display = 'none';
+      const splash = document.getElementById('splash');
+      const splashText = document.getElementById('splashText');
+      splashText.innerHTML = text.replace(/\n/g, '<br>') + '<br><span style="font-size: 0.9rem;">(Click anywhere to return)</span>';
+      splash.classList.add('active');
+    }
+
+    function hideSplash() {
+      document.getElementById('mainContent').style.display = 'flex';
+      document.getElementById('splash').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
